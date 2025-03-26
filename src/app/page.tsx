@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import { Tabs, TabsContent } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Navigation
 import Navigation from "@/components/ui-custom/Navigation";
+import Footer from "@/components/ui-custom/Footer";
 
 // Organ Donation Sections
 import OrganDonationIntro from "@/components/sections/OrganDonationIntro";
@@ -30,12 +32,23 @@ import CallToAction from "@/components/sections/CallToAction";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("organ-intro");
+  const [activeTab, setActiveTab] = useState("organ");
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
   // Handle theme toggle
   const handleThemeToggle = () => {
     setTheme(theme === "dark" ? "light" : "dark");
+  };
+
+  // Handle tab change
+  const handleTabChange = (value: string) => {
+    setActiveTab(value);
+    if (value === "organ") {
+      scrollToSection("organ-intro");
+    } else {
+      scrollToSection("body-intro");
+    }
   };
 
   // Scroll to section
@@ -45,6 +58,13 @@ export default function Home() {
       element.scrollIntoView({ behavior: "smooth" });
     }
     setActiveSection(sectionId);
+    
+    // Update active tab based on section
+    if (sectionId.startsWith("organ")) {
+      setActiveTab("organ");
+    } else if (sectionId.startsWith("body")) {
+      setActiveTab("body");
+    }
   };
 
   // Handle intersection observer for sections
@@ -57,6 +77,13 @@ export default function Home() {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               setActiveSection(entry.target.id);
+              
+              // Update active tab based on section
+              if (entry.target.id.startsWith("organ")) {
+                setActiveTab("organ");
+              } else if (entry.target.id.startsWith("body")) {
+                setActiveTab("body");
+              }
             }
           });
         },
@@ -81,37 +108,52 @@ export default function Home() {
   }
 
   return (
-    <main className="relative">
+    <main className="relative bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900 min-h-screen">
       <Navigation 
-        activeSection={activeSection} 
+        activeSection={activeSection}
+        activeTab={activeTab}
+        onTabChange={handleTabChange}
         onSectionChange={scrollToSection} 
         onThemeToggle={handleThemeToggle} 
       />
 
-      <Tabs defaultValue="organ" className="w-full">
-        <TabsContent value="organ" className="mt-0">
-          <OrganDonationIntro />
-          <OrganDonationWhat />
-          <OrganDonationProcess />
-          <OrganDonationLegal />
-          <OrganDonationRequirements />
-          <OrganDonationEthics />
-          <OrganDonationProsCons />
-        </TabsContent>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
+            <TabsContent value="organ" className="mt-0 pt-16">
+              <OrganDonationIntro />
+              <OrganDonationWhat />
+              <OrganDonationProcess />
+              <OrganDonationLegal />
+              <OrganDonationRequirements />
+              <OrganDonationEthics />
+              <OrganDonationProsCons />
+            </TabsContent>
 
-        <TabsContent value="body" className="mt-0">
-          <BodyDonationIntro />
-          <BodyDonationWhat />
-          <BodyDonationProcess />
-          <BodyDonationRequirements />
-          <BodyDonationEthics />
-          <BodyDonationScience />
-        </TabsContent>
-      </Tabs>
+            <TabsContent value="body" className="mt-0 pt-16">
+              <BodyDonationIntro />
+              <BodyDonationWhat />
+              <BodyDonationProcess />
+              <BodyDonationRequirements />
+              <BodyDonationEthics />
+              <BodyDonationScience />
+            </TabsContent>
+          </Tabs>
+        </motion.div>
+      </AnimatePresence>
 
       {/* Shared sections */}
       <FAQ />
       <CallToAction />
+      
+      {/* Footer mit Quellenlinks */}
+      <Footer />
     </main>
   );
 }

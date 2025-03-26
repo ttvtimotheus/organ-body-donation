@@ -5,17 +5,21 @@ import { Button } from '@/components/ui/button';
 
 interface NavigationProps {
   activeSection: string;
+  activeTab: string;
+  onTabChange: (value: string) => void;
   onSectionChange: (section: string) => void;
   onThemeToggle: () => void;
 }
 
 const Navigation: React.FC<NavigationProps> = ({ 
-  activeSection, 
+  activeSection,
+  activeTab,
+  onTabChange,
   onSectionChange,
   onThemeToggle
 }) => {
   const [scrolled, setScrolled] = useState(false);
-  const [isOrganMode, setIsOrganMode] = useState(activeSection.startsWith('organ'));
+  const isOrganMode = activeTab === 'organ';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,24 +30,16 @@ const Navigation: React.FC<NavigationProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    setIsOrganMode(activeSection.startsWith('organ'));
-  }, [activeSection]);
-
   const handleToggleTheme = () => {
-    if (isOrganMode) {
-      onSectionChange('body-intro');
-      setIsOrganMode(false);
-    } else {
-      onSectionChange('organ-intro');
-      setIsOrganMode(true);
-    }
+    onTabChange(isOrganMode ? 'body' : 'organ');
   };
 
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-md py-2' : 'py-4'
+        scrolled 
+          ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-md py-2' 
+          : 'bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm shadow-sm py-4'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -51,11 +47,18 @@ const Navigation: React.FC<NavigationProps> = ({
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center">
-          <span className={`text-xl font-bold ${
-            isOrganMode ? 'text-blue-600 dark:text-blue-400' : 'text-red-600 dark:text-red-400'
-          }`}>
+          <motion.span 
+            className={`text-xl font-bold ${
+              isOrganMode 
+                ? 'text-blue-600 dark:text-blue-400' 
+                : 'text-red-600 dark:text-red-400'
+            }`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+          >
             {isOrganMode ? 'Organspende' : 'Körperspende'}
-          </span>
+          </motion.span>
         </div>
 
         <div className="flex items-center gap-4">
@@ -63,7 +66,7 @@ const Navigation: React.FC<NavigationProps> = ({
             <Button 
               variant="ghost" 
               size="sm" 
-              className={`${activeSection === 'faq' ? 'bg-gray-100 dark:bg-gray-800' : ''}`}
+              className={`${activeSection === 'faq' ? 'bg-gray-100 dark:bg-gray-800' : ''} hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors`}
               onClick={() => onSectionChange('faq')}
             >
               FAQ
@@ -71,74 +74,84 @@ const Navigation: React.FC<NavigationProps> = ({
             <Button 
               variant="ghost" 
               size="sm" 
-              className={`${activeSection === 'call-to-action' ? 'bg-gray-100 dark:bg-gray-800' : ''}`}
+              className={`${activeSection === 'call-to-action' ? 'bg-gray-100 dark:bg-gray-800' : ''} hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors`}
               onClick={() => onSectionChange('call-to-action')}
             >
               Handeln
             </Button>
           </div>
 
-          <Toggle 
-            pressed={!isOrganMode}
-            onPressedChange={handleToggleTheme}
-            className={`relative px-8 border ${
-              isOrganMode 
-                ? 'border-blue-300 dark:border-blue-700 bg-blue-50 dark:bg-blue-900/30' 
-                : 'border-red-300 dark:border-red-700 bg-red-50 dark:bg-red-900/30'
-            }`}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <span className={`absolute left-2 text-xs ${isOrganMode ? 'text-blue-600 dark:text-blue-400 font-bold' : 'text-gray-500 dark:text-gray-400'}`}>
-              Organ
-            </span>
-            <span className={`absolute right-2 text-xs ${!isOrganMode ? 'text-red-600 dark:text-red-400 font-bold' : 'text-gray-500 dark:text-gray-400'}`}>
-              Körper
-            </span>
-          </Toggle>
+            <Toggle 
+              pressed={!isOrganMode}
+              onPressedChange={handleToggleTheme}
+              className={`relative px-8 py-2 border-2 rounded-full transition-all duration-300 ${
+                isOrganMode 
+                  ? 'border-blue-400 dark:border-blue-600 bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100 dark:hover:bg-blue-800/40' 
+                  : 'border-red-400 dark:border-red-600 bg-red-50 dark:bg-red-900/30 hover:bg-red-100 dark:hover:bg-red-800/40'
+              }`}
+            >
+              <span className={`absolute left-2 text-xs font-medium ${isOrganMode ? 'text-blue-600 dark:text-blue-400 font-bold' : 'text-gray-500 dark:text-gray-400'}`}>
+                Organ
+              </span>
+              <span className={`absolute right-2 text-xs font-medium ${!isOrganMode ? 'text-red-600 dark:text-red-400 font-bold' : 'text-gray-500 dark:text-gray-400'}`}>
+                Körper
+              </span>
+            </Toggle>
+          </motion.div>
 
-          <Button 
-            variant="outline" 
-            size="icon" 
-            onClick={onThemeToggle}
-            className="border-gray-300 dark:border-gray-700"
+          <motion.div
+            whileHover={{ rotate: 15 }}
+            whileTap={{ scale: 0.9 }}
           >
-            <span className="sr-only">Toggle theme</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="hidden dark:block"
+            <Button 
+              variant="outline" 
+              size="icon" 
+              onClick={onThemeToggle}
+              className="border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             >
-              <circle cx="12" cy="12" r="4" />
-              <path d="M12 2v2" />
-              <path d="M12 20v2" />
-              <path d="m4.93 4.93 1.41 1.41" />
-              <path d="m17.66 17.66 1.41 1.41" />
-              <path d="M2 12h2" />
-              <path d="M20 12h2" />
-              <path d="m6.34 17.66-1.41 1.41" />
-              <path d="m19.07 4.93-1.41 1.41" />
-            </svg>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="block dark:hidden"
-            >
-              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-            </svg>
-          </Button>
+              <span className="sr-only">Toggle theme</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="hidden dark:block"
+              >
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2" />
+                <path d="M12 20v2" />
+                <path d="m4.93 4.93 1.41 1.41" />
+                <path d="m17.66 17.66 1.41 1.41" />
+                <path d="M2 12h2" />
+                <path d="M20 12h2" />
+                <path d="m6.34 17.66-1.41 1.41" />
+                <path d="m19.07 4.93-1.41 1.41" />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="block dark:hidden"
+              >
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+              </svg>
+            </Button>
+          </motion.div>
         </div>
       </div>
     </motion.nav>
