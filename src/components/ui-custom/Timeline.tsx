@@ -25,7 +25,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
 }) => {
   const isActive = activeIndex === index;
   const isPast = activeIndex > index;
-  const isFuture = activeIndex < index;
+  // const isFuture = activeIndex < index;
   
   // Farben basierend auf Variante und Zustand
   const getColors = () => {

@@ -2,14 +2,16 @@
 
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { motion, AnimatePresence } from "framer-motion";
 
 // UI Components
 import Navigation from "@/components/ui-custom/Navigation";
 import Footer from "@/components/ui-custom/Footer";
-import OrganVisualization from "@/components/ui-custom/OrganVisualization";
 import StatisticsVisualizer from "@/components/ui-custom/StatisticsVisualizer";
+import ScrollSection from "@/components/ui-custom/ScrollSection";
+import DecisionQuiz from "@/components/ui-custom/DecisionQuiz";
+import Testimonials from "@/components/ui-custom/Testimonials";
 
 // Organ Donation Sections
 import OrganDonationIntro from "@/components/sections/OrganDonationIntro";
@@ -31,11 +33,6 @@ import BodyDonationScience from "@/components/sections/BodyDonationScience";
 // Shared Sections
 import FAQ from "@/components/sections/FAQ";
 import CallToAction from "@/components/sections/CallToAction";
-
-// Interactive Components
-import DecisionQuiz from "@/components/ui-custom/DecisionQuiz";
-import Testimonials from "@/components/ui-custom/Testimonials";
-import ScrollSection from "@/components/ui-custom/ScrollSection";
 
 export default function Home() {
   // Track the currently visible section for navigation highlighting
@@ -177,7 +174,7 @@ export default function Home() {
                         Entdecken Sie die aktuellen Statistiken zur Organspende und erfahren Sie mehr über die Bedeutung Ihrer Entscheidung
                       </p>
                     </div>
-                    <StatisticsVisualizer type="organ" />
+                    <StatisticsVisualizer _type="organ" />
                   </motion.div>
                 </div>
               </ScrollSection>

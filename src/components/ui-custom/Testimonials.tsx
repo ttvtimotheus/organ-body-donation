@@ -142,7 +142,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ className }) => {
                     </div>
                     <div className="flex-1">
                       <blockquote className="text-lg italic text-gray-700 dark:text-gray-300 mb-4">
-                        "{filteredTestimonials[activeIndex].quote}"
+                        &quot;{filteredTestimonials[activeIndex].quote}&quot;
                       </blockquote>
                       <div className="font-semibold text-gray-900 dark:text-gray-100">
                         {filteredTestimonials[activeIndex].name}

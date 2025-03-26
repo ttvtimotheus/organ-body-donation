@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -311,7 +310,7 @@ const DonationMap: React.FC<DonationMapProps> = ({ className }) => {
         {!isListExpanded && (
           <div className="text-center p-8 bg-gray-50 dark:bg-gray-800 rounded-lg">
             <p className="text-gray-600 dark:text-gray-400">
-              Klicken Sie auf "Liste anzeigen", um alle Körperspende-Institute in Deutschland zu sehen.
+              Klicken Sie auf &quot;Liste anzeigen&quot;, um alle Körperspende-Institute in Deutschland zu sehen.
             </p>
           </div>
         )}
