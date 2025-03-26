@@ -82,15 +82,14 @@ const ScrollSection: React.FC<ScrollSectionProps> = ({
       }
     );
 
-    if (sectionRef.current) {
-      const currentSectionRef = sectionRef.current;
+    const currentSectionRef = sectionRef.current;
+    if (currentSectionRef) {
       observer.observe(currentSectionRef);
     }
 
     // Clean up observer on component unmount
     return () => {
-      if (sectionRef.current) {
-        const currentSectionRef = sectionRef.current;
+      if (currentSectionRef) {
         observer.unobserve(currentSectionRef);
       }
     };

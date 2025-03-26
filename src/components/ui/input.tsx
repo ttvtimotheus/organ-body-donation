@@ -4,12 +4,12 @@ import { cn } from "@/lib/utils"
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  // Zusätzliche Props können hier hinzugefügt werden
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   additionalProp?: boolean;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, additionalProp, ...props }, ref) => {
+  ({ className, type, ...props }, ref) => {
     return (
       <input
         type={type}
