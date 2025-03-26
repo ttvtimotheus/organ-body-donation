@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Navigation from "@/components/ui-custom/Navigation";
 import Footer from "@/components/ui-custom/Footer";
 import OrganVisualization from "@/components/ui-custom/OrganVisualization";
+import StatisticsVisualizer from "@/components/ui-custom/StatisticsVisualizer";
 
 // Organ Donation Sections
 import OrganDonationIntro from "@/components/sections/OrganDonationIntro";
@@ -154,6 +155,33 @@ export default function Home() {
               <ScrollSection id="organ-what" onVisible={() => setActiveSection("organ-what")}>
                 <OrganDonationWhat />
               </ScrollSection>
+              
+              <ScrollSection id="organ-statistics" onVisible={() => setActiveSection("organ-statistics")}>
+                <div className="container mx-auto px-4">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                    className="mb-12"
+                  >
+                    <div className="text-center mb-10">
+                      <div className="inline-block bg-blue-100 dark:bg-blue-900/30 px-4 py-1 rounded-full text-blue-600 dark:text-blue-300 text-sm font-medium mb-3">
+                        Aktuelle Zahlen 2024
+                      </div>
+                      <h2 className="text-3xl md:text-4xl font-bold text-blue-700 dark:text-blue-300 mb-4">
+                        Organspende in Deutschland
+                      </h2>
+                      <div className="w-24 h-1 bg-blue-600 dark:bg-blue-400 mx-auto mb-6"></div>
+                      <p className="text-lg text-blue-600/80 dark:text-blue-400/80 max-w-3xl mx-auto">
+                        Entdecken Sie die aktuellen Statistiken zur Organspende und erfahren Sie mehr über die Bedeutung Ihrer Entscheidung
+                      </p>
+                    </div>
+                    <StatisticsVisualizer type="organ" />
+                  </motion.div>
+                </div>
+              </ScrollSection>
+              
               <OrganDonationProcess />
               <OrganDonationLegal />
               <OrganDonationRequirements />
