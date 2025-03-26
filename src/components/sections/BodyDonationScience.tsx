@@ -74,15 +74,15 @@ const BodyDonationScience = () => {
           
           <div className="space-y-4 italic">
             <p className="text-gray-700 dark:text-gray-300 border-l-4 border-red-300 pl-4 py-1">
-              "Die Arbeit am anatomischen Präparat hat mir ein tiefes Verständnis für die menschliche Anatomie vermittelt, 
+              &quot;Die Arbeit am anatomischen Präparat hat mir ein tiefes Verständnis für die menschliche Anatomie vermittelt, 
               das ich aus keinem Buch hätte lernen können. Ich bin den Körperspendern unendlich dankbar für diese 
-              unersetzliche Lernerfahrung."
+              unersetzliche Lernerfahrung.&quot;
               <span className="block mt-1 text-sm not-italic">— Medizinstudentin, 4. Semester</span>
             </p>
             
             <p className="text-gray-700 dark:text-gray-300 border-l-4 border-red-300 pl-4 py-1">
-              "Im Präparierkurs habe ich nicht nur Anatomie gelernt, sondern auch Respekt vor dem menschlichen Körper 
-              und dem Leben. Diese Erfahrung hat mich als angehenden Arzt und als Mensch geprägt."
+              &quot;Im Präparierkurs habe ich nicht nur Anatomie gelernt, sondern auch Respekt vor dem menschlichen Körper 
+              und dem Leben. Diese Erfahrung hat mich als angehenden Arzt und als Mensch geprägt.&quot;
               <span className="block mt-1 text-sm not-italic">— Medizinstudent, 6. Semester</span>
             </p>
           </div>

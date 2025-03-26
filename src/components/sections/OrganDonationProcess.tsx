@@ -40,7 +40,10 @@ const OrganDonationProcess = () => {
         </h2>
         
         <div className="bg-white dark:bg-blue-950/50 rounded-xl p-6 shadow-sm">
-          <Timeline items={timelineItems} />
+          <Timeline 
+            items={timelineItems} 
+            colorTheme="blue"
+          />
         </div>
         
         <motion.div 
@@ -51,8 +54,8 @@ const OrganDonationProcess = () => {
           viewport={{ once: true }}
         >
           <p className="text-gray-700 dark:text-gray-300 italic">
-            "Der gesamte Prozess der Organspende unterliegt strengen gesetzlichen Regelungen und ethischen Grundsätzen, 
-            um Missbrauch zu verhindern und die Würde des Spenders zu wahren."
+            &quot;Der Prozess der Organspende ist komplex und erfordert eine sorgfältige Koordination. 
+            Jeder Schritt ist wichtig, um sicherzustellen, dass die Organe optimal genutzt werden können.&quot;
           </p>
         </motion.div>
       </motion.div>

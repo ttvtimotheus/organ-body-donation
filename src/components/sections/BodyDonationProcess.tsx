@@ -38,7 +38,7 @@ const BodyDonationProcess = () => {
         <div className="bg-white dark:bg-red-950/50 rounded-xl p-6 shadow-sm">
           <Timeline 
             items={timelineItems} 
-            variant="red"
+            colorTheme="red"
           />
         </div>
         
@@ -50,9 +50,8 @@ const BodyDonationProcess = () => {
           viewport={{ once: true }}
         >
           <p className="text-gray-700 dark:text-gray-300 italic">
-            "Die Entscheidung zur Körperspende sollte wohlüberlegt sein und mit Angehörigen besprochen werden. 
-            Es ist wichtig, dass die Familie die Entscheidung kennt und respektiert, da sie nach dem Tod 
-            mit der Situation umgehen muss."
+            &quot;Die Entscheidung zur Körperspende ist ein wichtiger Schritt. Der Prozess ist klar strukturiert, 
+            um sicherzustellen, dass der letzte Wille des Spenders mit Würde und Respekt umgesetzt wird.&quot;
           </p>
         </motion.div>
       </motion.div>

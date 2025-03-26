@@ -70,9 +70,9 @@ const BodyDonationWhat = () => {
           className="mt-8 p-5 bg-red-100 dark:bg-red-900/50 rounded-lg border border-red-200 dark:border-red-800"
         >
           <p className="text-gray-700 dark:text-gray-300 italic">
-            "Der respektvolle Umgang mit den Körperspendern ist ein zentrales Anliegen aller anatomischen Einrichtungen. 
+            &quot;Der respektvolle Umgang mit den Körperspendern ist ein zentrales Anliegen aller anatomischen Einrichtungen. 
             Die Studierenden werden dazu angehalten, den Körperspendern mit Würde und Dankbarkeit zu begegnen, da sie 
-            durch ihre Spende einen unschätzbaren Beitrag zur medizinischen Ausbildung leisten."
+            durch ihre Spende einen unschätzbaren Beitrag zur medizinischen Ausbildung leisten.&quot;
           </p>
         </motion.div>
       </motion.div>

@@ -10,7 +10,7 @@ interface TimelineItemProps {
   index: number;
   activeIndex: number;
   setActiveIndex: (index: number) => void;
-  variant: 'blue' | 'red';
+  colorTheme: 'blue' | 'red';
 }
 
 const TimelineItem: React.FC<TimelineItemProps> = ({ 
@@ -21,7 +21,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
   index,
   activeIndex,
   setActiveIndex,
-  variant
+  colorTheme
 }) => {
   const isActive = activeIndex === index;
   const isPast = activeIndex > index;
@@ -29,7 +29,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
   
   // Farben basierend auf Variante und Zustand
   const getColors = () => {
-    if (variant === 'blue') {
+    if (colorTheme === 'blue') {
       return {
         active: "from-blue-400 to-blue-600 shadow-blue-300/50 dark:shadow-blue-900/50",
         past: "from-blue-300 to-blue-500 opacity-80",
@@ -128,13 +128,13 @@ interface TimelineProps {
     icon?: React.ReactNode;
   }>;
   className?: string;
-  variant?: 'blue' | 'red';
+  colorTheme?: 'blue' | 'red';
 }
 
 const Timeline: React.FC<TimelineProps> = ({ 
   items, 
   className,
-  variant = 'blue'
+  colorTheme = 'blue'
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   
@@ -151,7 +151,7 @@ const Timeline: React.FC<TimelineProps> = ({
             isLast={index === items.length - 1}
             activeIndex={activeIndex}
             setActiveIndex={setActiveIndex}
-            variant={variant}
+            colorTheme={colorTheme}
           />
         ))}
       </div>
@@ -161,7 +161,7 @@ const Timeline: React.FC<TimelineProps> = ({
           className={cn(
             "px-4 py-2 rounded-full text-white font-medium",
             "bg-gradient-to-r shadow-md disabled:opacity-50 disabled:cursor-not-allowed",
-            variant === 'blue' 
+            colorTheme === 'blue' 
               ? "from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700"
               : "from-red-400 to-red-600 hover:from-red-500 hover:to-red-700"
           )}
@@ -177,7 +177,7 @@ const Timeline: React.FC<TimelineProps> = ({
           className={cn(
             "px-4 py-2 rounded-full text-white font-medium",
             "bg-gradient-to-r shadow-md disabled:opacity-50 disabled:cursor-not-allowed",
-            variant === 'blue' 
+            colorTheme === 'blue' 
               ? "from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700"
               : "from-red-400 to-red-600 hover:from-red-500 hover:to-red-700"
           )}

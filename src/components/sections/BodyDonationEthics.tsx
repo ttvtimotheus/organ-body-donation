@@ -74,9 +74,9 @@ const BodyDonationEthics = () => {
           className="mt-8 p-5 bg-red-100 dark:bg-red-900/50 rounded-lg border border-red-200 dark:border-red-800"
         >
           <p className="text-gray-700 dark:text-gray-300 italic">
-            "Die Körperspende ist ein Geschenk an die Wissenschaft und die zukünftigen Generationen von Ärzten. 
+            &quot;Die Körperspende ist ein Geschenk an die Wissenschaft und die zukünftigen Generationen von Ärzten. 
             Sie verdient höchsten Respekt und eine ethisch fundierte Handhabung. Die Dankbarkeit der medizinischen 
-            Gemeinschaft gegenüber den Körperspendern kann nicht hoch genug eingeschätzt werden."
+            Gemeinschaft gegenüber den Körperspendern kann nicht hoch genug eingeschätzt werden.&quot;
           </p>
         </motion.div>
       </motion.div>

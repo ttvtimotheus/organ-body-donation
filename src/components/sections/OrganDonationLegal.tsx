@@ -21,13 +21,23 @@ const OrganDonationLegal = () => {
             <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-4">
               Die Entscheidungslösung in Deutschland
             </h3>
+            <p>
+              Die Entscheidung zur Organspende wird in Deutschland auf dem Organspendeausweis dokumentiert. 
+              Es gibt verschiedene Möglichkeiten: Man kann der Organspende zustimmen, sie ablehnen oder 
+              die Entscheidung auf eine Vertrauensperson übertragen. Der Ausweis sollte stets mitgeführt werden.
+            </p>
+            <p className="mt-2">
+              Seit 2012 gilt in Deutschland die sogenannte &quot;Entscheidungslösung&quot;. Das bedeutet, dass jeder Bürger 
+              regelmäßig zu einer Entscheidung zur Organspende aufgefordert wird, aber keine Pflicht besteht, 
+              sich zu entscheiden.
+            </p>
             <p className="text-gray-700 dark:text-gray-300 mb-4">
-              In Deutschland gilt seit 2012 die sogenannte "Entscheidungslösung". Diese besagt, dass jeder Bürger 
+              In Deutschland gilt seit 2012 die sogenannte &#34;Entscheidungslösung&#34;. Diese besagt, dass jeder Bürger 
               regelmäßig die Möglichkeit erhalten soll, sich mit dem Thema Organspende auseinanderzusetzen und eine 
               informierte Entscheidung zu treffen.
             </p>
             <p className="text-gray-700 dark:text-gray-300">
-              Im Gegensatz zur "Widerspruchslösung", die in einigen europäischen Ländern gilt, ist in Deutschland 
+              Im Gegensatz zur &quot;Widerspruchslösung&quot;, die in einigen europäischen Ländern gilt, ist in Deutschland 
               niemand automatisch Organspender. Eine Organentnahme ist nur zulässig, wenn der Verstorbene zu Lebzeiten 
               zugestimmt hat oder die Angehörigen im Sinne des Verstorbenen einer Spende zustimmen.
             </p>

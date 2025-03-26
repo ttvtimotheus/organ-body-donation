@@ -70,9 +70,9 @@ const OrganDonationEthics = () => {
             className="p-5 bg-blue-100 dark:bg-blue-900/70 rounded-lg border border-blue-200 dark:border-blue-800"
           >
             <p className="text-gray-700 dark:text-gray-300 italic">
-              "Die ethischen Fragen zur Organspende haben keine einfachen Antworten. Sie erfordern eine persönliche 
+              &quot;Die ethischen Fragen zur Organspende haben keine einfachen Antworten. Sie erfordern eine persönliche 
               Auseinandersetzung und Abwägung. Wichtig ist, dass jeder Mensch die Möglichkeit hat, eine informierte 
-              und selbstbestimmte Entscheidung zu treffen."
+              und selbstbestimmte Entscheidung zu treffen.&quot;
             </p>
           </motion.div>
         </div>
