@@ -2,12 +2,17 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
+/**
+ * Footer component that displays source links and site information
+ * Provides credibility by linking to official sources for both organ and body donation
+ */
 const Footer = () => {
   return (
     <footer className="bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Organspende Quellen */}
+          {/* Official sources for organ donation information 
+            These links provide users with reliable sources to learn more about organ donation */}
           <div>
             <h3 className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-4">Quellen: Organspende</h3>
             <ul className="space-y-2">
@@ -53,8 +58,9 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-
-          {/* Körperspende Quellen */}
+          
+          {/* Official sources for body donation information 
+            These links provide users with reliable sources to learn more about body donation */}
           <div>
             <h3 className="text-lg font-semibold text-red-600 dark:text-red-400 mb-4">Quellen: Körperspende</h3>
             <ul className="space-y-2">
@@ -100,8 +106,9 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-
-          {/* Allgemeine Quellen und Rechtliches */}
+          
+          {/* Allgemeine Quellen und Rechtliches 
+            This section provides general resources and legal information related to organ and body donation */}
           <div>
             <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">Allgemeine Quellen</h3>
             <ul className="space-y-2">
@@ -148,7 +155,9 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-
+        
+        {/* Copyright and disclaimer section 
+          This section provides copyright information and a disclaimer about the website's content */}
         <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800 text-center">
           <p className="text-sm text-gray-500 dark:text-gray-400">
             {new Date().getFullYear()} Organ- und Körperspende Informationsportal. Diese Website dient ausschließlich Informationszwecken.

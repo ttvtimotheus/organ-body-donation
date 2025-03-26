@@ -3,9 +3,14 @@ import { motion } from 'framer-motion';
 import ScrollSection from '../ui-custom/ScrollSection';
 import { Button } from '@/components/ui/button';
 
+/**
+ * Introduction section for organ donation information
+ * Provides an overview and key facts about organ donation
+ */
 const OrganDonationIntro = () => {
   return (
     <ScrollSection id="organ-intro" variant="organ">
+      {/* Animated title section with gradient underline */}
       <motion.div
         initial={{ y: 20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
@@ -22,6 +27,7 @@ const OrganDonationIntro = () => {
         </p>
       </motion.div>
 
+      {/* Main content with staggered animation */}
       <motion.div
         initial={{ y: 30, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
@@ -29,6 +35,7 @@ const OrganDonationIntro = () => {
         viewport={{ once: true }}
         className="space-y-8"
       >
+        {/* What is organ donation explanation card */}
         <div className="bg-white/30 dark:bg-blue-950/30 p-6 rounded-xl shadow-sm border border-blue-100 dark:border-blue-900/50">
           <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-blue-600 dark:text-blue-400 flex items-center">
             <span className="inline-block mr-3 text-blue-500 dark:text-blue-300">
@@ -50,6 +57,7 @@ const OrganDonationIntro = () => {
           </p>
         </div>
         
+        {/* Call to action buttons */}
         <div className="flex flex-col md:flex-row gap-4 mt-8 justify-center">
           <Button 
             variant="default" 
