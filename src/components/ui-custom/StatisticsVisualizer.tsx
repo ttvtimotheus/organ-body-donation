@@ -17,7 +17,7 @@ interface StatData {
 
 interface StatisticsVisualizerProps {
   className?: string;
-  _type?: 'organ' | 'body';
+  type?: 'organ' | 'body';
 }
 
 /**
@@ -26,7 +26,8 @@ interface StatisticsVisualizerProps {
  */
 const StatisticsVisualizer: React.FC<StatisticsVisualizerProps> = ({ 
   className,
-  _type = 'organ'
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  type = 'organ'
 }) => {
   const [activeTab, setActiveTab] = useState<'waiting' | 'donors' | 'transplants' | 'documentation'>('waiting');
   

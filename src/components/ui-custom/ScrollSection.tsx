@@ -7,7 +7,7 @@ interface ScrollSectionProps {
   className?: string;
   children: ReactNode;
   variant?: 'organ' | 'body' | 'neutral';
-  onVisible?: () => void;
+  onVisible?: (id: string) => void;
 }
 
 /**
@@ -72,7 +72,7 @@ const ScrollSection: React.FC<ScrollSectionProps> = ({
       ([entry]) => {
         // Call onVisible callback when section becomes visible
         if (entry.isIntersecting) {
-          onVisible();
+          onVisible(id);
         }
       },
       {
@@ -83,16 +83,18 @@ const ScrollSection: React.FC<ScrollSectionProps> = ({
     );
 
     if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+      const currentSectionRef = sectionRef.current;
+      observer.observe(currentSectionRef);
     }
 
     // Clean up observer on component unmount
     return () => {
       if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+        const currentSectionRef = sectionRef.current;
+        observer.unobserve(currentSectionRef);
       }
     };
-  }, [onVisible]);
+  }, [onVisible, id]);
 
   return (
     <motion.section

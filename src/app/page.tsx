@@ -174,7 +174,7 @@ export default function Home() {
                         Entdecken Sie die aktuellen Statistiken zur Organspende und erfahren Sie mehr über die Bedeutung Ihrer Entscheidung
                       </p>
                     </div>
-                    <StatisticsVisualizer _type="organ" />
+                    <StatisticsVisualizer type="organ" />
                   </motion.div>
                 </div>
               </ScrollSection>
