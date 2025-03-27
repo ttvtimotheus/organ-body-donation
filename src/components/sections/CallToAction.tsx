@@ -196,10 +196,10 @@ const CallToAction = () => {
                       <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
                         <li>Über die <a href="https://www.organspende-info.de" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Bundeszentrale für gesundheitliche Aufklärung</a></li>
                         <li>In vielen Apotheken, Arztpraxen und Krankenkassen</li>
-                        <li><a href="https://www.bundesgesundheitsministerium.de/fileadmin/Dateien/3_Downloads/O/Organspende/Organspendeausweis_ausfuellbar.pdf" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Als PDF zum Download</a></li>
+                        <li>Als PDF zum Ausdrucken und Ausfüllen</li>
                       </ul>
                       <div className="flex justify-center mt-4">
-                        <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                        <Button className="bg-blue-600 hover:bg-blue-700 text-white" onClick={() => window.open('https://www.bundesgesundheitsministerium.de/fileadmin/Dateien/3_Downloads/O/Organspende/Organspendeausweis_ausfuellbar.pdf', '_blank')}>
                           PDF herunterladen
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
