@@ -164,6 +164,14 @@ const Footer = () => {
           <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">
             Die medizinischen Informationen auf dieser Website ersetzen nicht die professionelle Beratung durch medizinisches Fachpersonal.
           </p>
+          <div className="mt-4">
+            <Link 
+              href="/impressum" 
+              className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
+            >
+              Impressum
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
