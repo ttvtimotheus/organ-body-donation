@@ -22,7 +22,7 @@ const organsList = [
   {
     name: 'Leber',
     description: 'Kann teilweise transplantiert werden, da sie sich regenerieren kann. Auch Lebendspende möglich.',
-    icon: '🫓'
+    icon: '🍺'
   },
   {
     name: 'Bauchspeicheldrüse',

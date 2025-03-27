@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
 import ScrollSection from '../ui-custom/ScrollSection';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -19,27 +19,15 @@ const CallToAction = () => {
   // Form fields for the organ donation card
   const [name, setName] = useState('');
   const [birthdate, setBirthdate] = useState('');
-  // Controls visibility of the institution contact form
-  const [showContactForm, setShowContactForm] = useState(false);
-  // Form data for contacting body donation institutions
-  const [contactFormData, setContactFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    institution: ''
-  });
   
   /**
-   * Updates the contact form state when input fields change
+   * Generates a QR code for the digital organ donation card
    */
-  const handleContactFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { id, value } = e.target;
-    setContactFormData({
-      ...contactFormData,
-      [id]: value
-    });
+  const handleGenerateQRCode = () => {
+    // In a real application, this would generate a QR code with the user's information
+    setShowQRCode(true);
   };
-  
+
   return (
     <ScrollSection id="call-to-action" variant="organ" className="bg-gradient-to-br from-blue-50 via-purple-50 to-red-50 dark:from-blue-950 dark:via-purple-950 dark:to-red-950">
       {/* Section header with animation */}
@@ -164,7 +152,7 @@ const CallToAction = () => {
                       {/* QR code placeholder - would be generated in production */}
                       <div className="flex justify-center p-4">
                         <div className="w-48 h-48 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="mb-2">
                             <rect x="3" y="3" width="18" height="18" rx="2" />
                             <path d="M8 7h.01" />
                             <path d="M16 7h.01" />
@@ -226,139 +214,41 @@ const CallToAction = () => {
               <CardHeader>
                 <CardTitle className="text-2xl text-red-700 dark:text-red-400">Körperspende</CardTitle>
                 <CardDescription>
-                  Kontaktieren Sie ein anatomisches Institut in Ihrer Nähe
+                  Informieren Sie sich über die Möglichkeiten der Körperspende für die Wissenschaft.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                {/* Toggle between information and contact form */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Button 
-                    variant="outline" 
-                    className="border-red-300 text-red-700 hover:bg-red-50 dark:border-red-700 dark:text-red-400 dark:hover:bg-red-950/50 h-auto py-4"
-                    onClick={() => setShowContactForm(false)}
-                  >
-                    <div className="flex flex-col items-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mb-2">
-                        <circle cx="12" cy="12" r="10" />
-                        <path d="M12 16v-4" />
-                        <path d="M12 8h.01" />
-                      </svg>
-                      <span>Informationen</span>
-                    </div>
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    className="border-red-300 text-red-700 hover:bg-red-50 dark:border-red-700 dark:text-red-400 dark:hover:bg-red-950/50 h-auto py-4"
-                    onClick={() => setShowContactForm(true)}
-                  >
-                    <div className="flex flex-col items-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mb-2">
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                      </svg>
-                      <span>Kontaktformular</span>
-                    </div>
-                  </Button>
-                </div>
-
-                {/* Conditional rendering based on user selection */}
-                <AnimatePresence mode="wait">
-                  {showContactForm ? (
-                    // Contact form for body donation institutions
-                    <motion.div
-                      key="contact"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.3 }}
-                      className="space-y-4"
+                {/* Information about body donation */}
+                <motion.div
+                  key="info"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="space-y-4"
+                >
+                  <p className="text-gray-700 dark:text-gray-300">
+                    Um Ihren Körper der Wissenschaft zu spenden, müssen Sie direkt mit einem anatomischen Institut Kontakt aufnehmen:
+                  </p>
+                  <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+                    <li>Jedes Institut hat eigene Verfahren und Anforderungen</li>
+                    <li>Sie müssen in der Regel einen Vertrag mit dem Institut abschließen</li>
+                    <li>Informieren Sie Ihre Angehörigen über Ihre Entscheidung</li>
+                    <li>Klären Sie alle Fragen direkt mit dem Institut</li>
+                  </ul>
+                  
+                  <div className="flex justify-center mt-4">
+                    <Button 
+                      className="bg-red-600 hover:bg-red-700 text-white"
+                      onClick={() => window.open('/impressum', '_blank')}
                     >
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                          <Label htmlFor="name">Name</Label>
-                          <Input 
-                            id="name" 
-                            placeholder="Vor- und Nachname" 
-                            value={contactFormData.name}
-                            onChange={handleContactFormChange}
-                          />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="email">E-Mail</Label>
-                          <Input 
-                            id="email" 
-                            type="email" 
-                            placeholder="ihre.email@beispiel.de"
-                            value={contactFormData.email}
-                            onChange={handleContactFormChange}
-                          />
-                        </div>
-                      </div>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                          <Label htmlFor="phone">Telefon</Label>
-                          <Input 
-                            id="phone" 
-                            placeholder="Telefonnummer" 
-                            value={contactFormData.phone}
-                            onChange={handleContactFormChange}
-                          />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="institution">Institut</Label>
-                          <Input 
-                            id="institution" 
-                            placeholder="Name des Instituts" 
-                            value={contactFormData.institution}
-                            onChange={handleContactFormChange}
-                          />
-                        </div>
-                      </div>
-                      
-                      <div className="flex justify-center mt-4">
-                        <Button className="bg-red-600 hover:bg-red-700 text-white">
-                          Anfrage senden
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2">
-                            <path d="M22 2L11 13" />
-                            <path d="M22 2l-7 20-4-9-9-4 20-7z" />
-                          </svg>
-                        </Button>
-                      </div>
-                    </motion.div>
-                  ) : (
-                    // Information about body donation process
-                    <motion.div
-                      key="info"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.3 }}
-                      className="space-y-4"
-                    >
-                      <p className="text-gray-700 dark:text-gray-300">
-                        Um Ihren Körper der Wissenschaft zu spenden, müssen Sie direkt mit einem anatomischen Institut Kontakt aufnehmen:
-                      </p>
-                      <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
-                        <li>Jedes Institut hat eigene Verfahren und Anforderungen</li>
-                        <li>Sie müssen in der Regel einen Vertrag mit dem Institut abschließen</li>
-                        <li>Informieren Sie Ihre Angehörigen über Ihre Entscheidung</li>
-                        <li>Klären Sie alle Fragen direkt mit dem Institut</li>
-                      </ul>
-                      
-                      <div className="flex justify-center mt-4">
-                        <Button 
-                          className="bg-red-600 hover:bg-red-700 text-white"
-                          onClick={() => setShowContactForm(true)}
-                        >
-                          Kontaktformular öffnen
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2">
-                            <path d="M5 12h14" />
-                            <path d="m12 5 7 7-7 7" />
-                          </svg>
-                        </Button>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                      Mehr Informationen
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2">
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                      </svg>
+                    </Button>
+                  </div>
+                </motion.div>
               </CardContent>
               <CardFooter className="flex flex-col text-sm text-gray-600 dark:text-gray-400 border-t border-gray-200 dark:border-gray-800 pt-4">
                 <p>
