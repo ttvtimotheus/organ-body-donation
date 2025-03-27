@@ -196,7 +196,7 @@ const CallToAction = () => {
                       <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
                         <li>Über die <a href="https://www.organspende-info.de" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Bundeszentrale für gesundheitliche Aufklärung</a></li>
                         <li>In vielen Apotheken, Arztpraxen und Krankenkassen</li>
-                        <li>Als PDF zum Ausdrucken und Ausfüllen</li>
+                        <li><a href="https://www.bundesgesundheitsministerium.de/fileadmin/Dateien/3_Downloads/O/Organspende/Organspendeausweis_ausfuellbar.pdf" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Als PDF zum Download</a></li>
                       </ul>
                       <div className="flex justify-center mt-4">
                         <Button className="bg-blue-600 hover:bg-blue-700 text-white">

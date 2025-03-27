@@ -159,7 +159,7 @@ const Footer = () => {
           This section provides copyright information and a disclaimer about the website's content */}
         <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800 text-center">
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            {new Date().getFullYear()} Organ- und Körperspende Informationsportal. Diese Website dient ausschließlich Informationszwecken.
+            (c) {new Date().getFullYear()} Organ- und Körperspende Informationsportal. Diese Website dient ausschließlich Informationszwecken.
           </p>
           <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">
             Die medizinischen Informationen auf dieser Website ersetzen nicht die professionelle Beratung durch medizinisches Fachpersonal.
